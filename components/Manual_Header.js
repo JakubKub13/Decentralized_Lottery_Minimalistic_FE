@@ -2,7 +2,7 @@ import {useMoralis} from "react-moralis"
 import {useEffect} from "react"
 
 export default function Manual_Header() {
-    const { enableWeb3, account, isWeb3Enabled, Moralis, deactivateWeb3 } = useMoralis()
+    const { enableWeb3, account, isWeb3Enabled, Moralis, deactivateWeb3, isWeb3EnableLoading } = useMoralis()
 
 // function takes 2 params , function as 1st parameter and second optionally dependency [] 
 // It keeps checking values in dependency array and if anything there changes it 's gonna call function and rerender the FE
@@ -37,6 +37,10 @@ export default function Manual_Header() {
                         if (typeof window !== "undefined") {
                             window.localStorage.setItem("connected", "injected")
                         }
-                    }}>Connect</button>)}
+                    }}
+                    disabled={isWeb3EnableLoading}
+                    >
+                        Connect
+                    </button>)}
             </div>)
 }
