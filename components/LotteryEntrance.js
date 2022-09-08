@@ -17,7 +17,7 @@ export default function LotteryEntrance() {
 
     const dispatch = useNotification()
 
-    const {runContractFunction: enterLottery} = useWeb3Contract({
+    const {runContractFunction: enterLottery, isLoading, isFetching} = useWeb3Contract({
         abi: abi,
         contractAddress: lotteryAddress, // specify the chainId
         functionName: "enterLottery",
@@ -78,19 +78,25 @@ export default function LotteryEntrance() {
             icon: "bell"
         })
     }
-// Rendering function
+
     return ( 
-        <div> 
+        <div className="p-5 "> 
             Hi from Lottery Entrance
             { lotteryAddress ? (
             <div>
-                <button onClick={async function() {await enterLottery({
+                <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-auto"
+                onClick={async function() {await enterLottery({
                     onSuccess: handleSuccess,
                     onError: (error) => console.log(error),
-                    })}}> Enter Lottery </button>
-                Entrance Fee: {ethers.utils.formatUnits(entranceFee, "ether")} ETH
-                Number of Players: {numPlayers}
-                Recent Winner: {recentWinner}
+                    })}}
+                    disabled={isLoading || isFetching}
+                    > 
+                        {isLoading || isFetching ? <div className="animate-spin spinner-border h-8 w-8 border-b-2 rounded-full"></div> : <div>Enter Lottery</div>}
+                    </button>
+                    <div>Entrance Fee: {ethers.utils.formatUnits(entranceFee, "ether")} ETH</div>
+                    <div>Number of Players: {numPlayers}</div>
+                    <div>Recent Winner: {recentWinner}</div>     
             </div>) : (<div> No Lottery address detected</div>)
             }
         </div>
