@@ -81,7 +81,7 @@ export default function LotteryEntrance() {
 
     return ( 
         <div className="p-5 "> 
-            Hi from Lottery Entrance
+            
             { lotteryAddress ? (
             <div>
                 <button

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -13,6 +13,7 @@
     "moralis": "^1.8.0",
     "moralis-v1": "^1.11.0",
     "next": "12.1.5",
+    "next-export": "^0.1.7",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-moralis": "^1.4.0",
