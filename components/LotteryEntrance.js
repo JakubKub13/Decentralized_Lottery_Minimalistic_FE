@@ -78,7 +78,7 @@ export default function LotteryEntrance() {
             icon: "bell"
         })
     }
-
+// Rendering function
     return ( 
         <div> 
             Hi from Lottery Entrance
